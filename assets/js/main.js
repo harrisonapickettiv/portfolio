@@ -313,9 +313,26 @@
   }
 
   // ===================================
+  // Copyright Year
+  // ===================================
+
+  function initCopyrightYear() {
+    const yearEl = document.getElementById('copyright-year');
+    if (!yearEl) return;
+
+    // The year in the HTML is when the site was created
+    const startYear = parseInt(yearEl.textContent, 10);
+    const currentYear = new Date().getFullYear();
+
+    if (currentYear > startYear) {
+      yearEl.textContent = `${startYear}–${currentYear}`;
+    }
+  }
+
+  // ===================================
   // Initialize
   // ===================================
-  
+
   function init() {
     // Initialize theme
     initTheme();
@@ -335,6 +352,7 @@
     initScrollReveal();
     initSmoothScroll();
     initLightbox();
+    initCopyrightYear();
 
     // Initial scroll check
     handleScroll();
